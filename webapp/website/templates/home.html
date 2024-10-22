@@ -1,0 +1,109 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{%block content%}
+<head>
+    <style>
+        revenues {
+            align: left;
+        }
+        h3{
+            padding: 4px;
+        }
+        h2 {
+            padding: 4px;
+            text-align: center;  
+        }
+
+        .table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-bottom: 10px; 
+        }
+        
+        th, td {
+            border: 2px solid black;
+            padding: 3px;
+            align: ceter;
+          }
+          th, td{
+            text-align: center;
+          }
+
+
+
+        /* Media query for small screens */ 
+        @media (max-width: 700px) { 
+
+            .table-left {
+                margin-top: 10px;
+                margin-bottom: 40px;
+                height: 300px;
+                overflow-y: auto;
+
+            }
+            .table-right{
+                height: 400px;
+                overflow-y: auto;
+
+            }
+            .tleft, .tright {
+                width: 100%;
+            }
+            
+
+            th {
+                position: sticky;
+                top: 0;
+                background-color: grey;
+            }
+
+        }
+           
+    </style>
+</head>
+<h2>Contability</h2>
+<div class="table-left">
+    <table align="center" class="tleft">
+        <tr>
+            <th colspan="3"><h4 align="center">Revenues</h3></th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Amount Revenue</th>
+            <th>Date Received</th>
+        </tr>
+        {% for revenue in revenues%}
+        <tr>
+            <td> {{revenue["name"]}} </td>
+            <td> {{revenue["amount_revenue"]}} </td>
+            <td> {{revenue["date_received"]}} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="table-right">
+    <table align="center" class="tright">
+        <tr>
+            <th colspan="4"><h4 align="center">Expenses</h3></th>
+        </tr>
+        <tr>
+            <th>Company Name</th>
+            <th>Amount Expense</th>
+            <th>Paid Date</th>
+            <th>Switch Paid(Y-N)</th>
+        </tr>
+        {% for expense in  expenses%}
+        <tr>
+            <td> {{expense["company_name"]}} </td>
+            <td> {{expense["amount_expense"]}} </td>
+            <td> {{expense["date_paid"]}} </td>
+            <td> {{expense["switch_paid"]}} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div classe="Result">
+    
+</div>
+
+{%endblock%}

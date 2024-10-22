@@ -1,0 +1,82 @@
+{% extends "base.html" %} {% block title %}Accounting{% endblock %}
+
+{%block content%}
+<head>
+    <style>
+        .container {
+            width: 100%%
+        }
+        h3 {
+            padding: 5px;
+        }
+        /* Media query for small screens */ 
+        @media (max-width: 700px) { 
+            .container {
+                with:100%;
+            }
+            th {
+                display: none;
+            }
+            td {
+                padding: 5 px;
+                display: grid;
+            }
+
+            td::before{
+                content: attr(data-cell) ": ";
+                font-weight= 700;
+            }
+
+            .table_down{
+
+            }
+
+        }
+
+    </style>
+</head>
+<h3 align="center">Accounting</h3>
+<div class="table_up">
+    <form method="POST">
+        <table align="center" class="tbup">
+            <tr>
+                <th>Name</th>
+                <th>Amount Revenue</th>
+                <tH>Date Received</th>
+            </tr>
+            <tr>
+                <td data-cell="Name"><input type="text" id="name" name="name" /></td>
+                <td data-cell="Amount Revenue"><input type="num" id="amount_revenue" name="amount_revenue" /></td>
+                <td data-cell="Date Received"><input type="date" id="date_received" name="date_received" value=""/></td>
+            </tr>
+        </table>
+        <br />
+        <div align="center">
+            <button type="submit"class="btn btn-primary">Add Revenu</button>
+        </div>
+        <br />
+    </form>
+</div>
+<div class="table_down">
+    <form method="POST">
+        <table align="center" class="tbdown">
+            <tr>
+                <th>Company Name</th>
+                <th>Amount Expense</th>
+                <th>Paid Date</th>
+                <th>Switch Paid(Y-N)</th>
+            </tr>
+            <tr>
+                <td data-cell="Company Name"><input type="text" id="company_name" name="company_name" /></td>
+                <td data-cell="Amount Expense"><input type="num" id="amount_expense" name="amount_expense" /></td>
+                <td data-cell="Data Paid"><input type="date" id="date_paid" name="date_paid" value=""/></td>
+                <td data-cell="Switch Paid Y/N"><input type="tel" id="switch" name="switch" /></td>
+            </tr>
+        </table>
+        <br />
+        <div align="center">
+            <button type="submit"class="btn btn-primary">Add Expense</button>
+        </div>
+    </form>
+</div>
+{%endblock%}
